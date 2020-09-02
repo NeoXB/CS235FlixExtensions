@@ -1,6 +1,6 @@
-from datafilereaders.movie_file_csv_reader import MovieFileCSVReader
-from domainmodel.movie import Movie
-from domainmodel.user import User
+from movie_file_csv_reader import MovieFileCSVReader
+from movie import Movie
+from user import User
 
 
 class WatchList:
@@ -76,7 +76,7 @@ class WatchList:
         if not isinstance(user, User):
             raise Exception("A valid User is required")
         else:
-            new_watchlist = WatchList(user,"")
+            new_watchlist = WatchList(user, "")
             for movie in self.__watchlist:
                 new_watchlist.add_movie(movie)
             return new_watchlist
@@ -84,17 +84,17 @@ class WatchList:
     def sort_watchlist_by_title(self):
         def get_movie_title(movie):
             return movie.title
-        return sorted(self.__watchlist, key = get_movie_title)
+        return sorted(self.__watchlist, key=get_movie_title)
 
     def sort_watchlist_by_year(self):
         def get_movie_year(movie):
             return movie.release_year
-        return sorted(self.__watchlist, key = get_movie_year)
+        return sorted(self.__watchlist, key=get_movie_year)
 
     def sort_watchlist_by_runtime(self):
         def get_movie_runtime(movie):
             return movie.runtime_minutes
-        return sorted(self.__watchlist, key = get_movie_runtime)
+        return sorted(self.__watchlist, key=get_movie_runtime)
 
     def change_watchlist_name(self, new_name):
         if isinstance(new_name, str) or new_name != "":
@@ -106,7 +106,7 @@ class WatchList:
         elif len(self.__watchlist) == 0:
             raise Exception("Sorry, there are no recommendations for now")
         else:
-            new_watchlist = WatchList(self.watchlist_owner,"Movie Recommendations")
+            new_watchlist = WatchList(self.watchlist_owner, "Movie Recommendations")
             movie_file_reader = MovieFileCSVReader(filename)
             movie_file_reader.read_csv_file()
             for new_movie in movie_file_reader.dataset_of_movies:
@@ -114,6 +114,3 @@ class WatchList:
                     if sorted(new_movie.genres) == sorted(current_movie.genres):
                         new_watchlist.add_movie(new_movie)
             return new_watchlist
-
-
-

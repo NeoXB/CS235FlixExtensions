@@ -1,6 +1,7 @@
-from domainmodel.genre import Genre
-from domainmodel.actor import Actor
-from domainmodel.director import Director
+from director import Director
+from genre import Genre
+from actor import Actor
+
 
 class Movie:
 
@@ -122,4 +123,3 @@ class Movie:
     def remove_genre(self, g):
         if g in self.__genres:
             self.__genres.remove(g)
-

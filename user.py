@@ -1,5 +1,6 @@
-from domainmodel.movie import Movie
-from domainmodel.review import Review
+from movie import Movie
+from review import Review
+
 
 class User:
 
@@ -62,4 +63,3 @@ class User:
         if not isinstance(review, Review):
             raise Exception("Only Reviews can be added")
         self.__reviews.append(review)
-

@@ -1,6 +1,7 @@
-from domainmodel.movie import Movie
-from domainmodel.user import User
-from domainmodel.review import Review
+from movie import Movie
+from user import User
+from review import Review
+
 
 class MovieWatchingSimulation:
 
